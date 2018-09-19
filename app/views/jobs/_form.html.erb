@@ -12,28 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :desc %>
+    <%= form.label :name, "Name:"%>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :origin, "Origin:" %>
+    <%= form.select :origin, list %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destination, "Destination:" %>
+    <%= form.select :destination, list %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost, "Cost:" %>
+    <%= form.number_field :cost, min: 1000, max: 10000001, step: 0.01, value: 1000.00 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :containers, "# of Containers Needed:" %>
+    <%= form.number_field :containers, min: 100, max: 100001, step: 100, value: 100 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc, "Description:"%>
     <%= form.text_area :desc %>
-  </div>
-
-  <div class="field">
-    <%= form.label :origin %>
-    <%= form.text_field :origin %>
-  </div>
-
-  <div class="field">
-    <%= form.label :destination %>
-    <%= form.text_field :destination %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.text_field :cost %>
-  </div>
-
-  <div class="field">
-    <%= form.label :containers %>
-    <%= form.number_field :containers %>
   </div>
 
   <div class="actions">

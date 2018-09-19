@@ -12,21 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, "Name:" %>
+    <%= form.text_field :name, value: "S.S." %>
   </div>
 
   <div class="field">
-    <%= form.label :max_containers %>
-    <%= form.number_field :max_containers %>
+    <%= form.label :max_containers, "# of Containers:" %>
+    <%= form.number_field :max_containers, value: 100, min: 100, max: 5001, step: 50 %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_field :location %>
+    <%= form.select :location, list %>
   </div>
 
+    <%= form.hidden_field :profile_id, value: current_user.profile.id %>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit value: "Set Sail" %>
   </div>
 <% end %>

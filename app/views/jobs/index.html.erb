@@ -5,7 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Desc</th>
+      <th>Name</th>
+      <th>Description</th>
       <th>Origin</th>
       <th>Destination</th>
       <th>Cost</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
+        <td><%= job.name %></td>
         <td><%= job.desc %></td>
         <td><%= job.origin %></td>
         <td><%= job.destination %></td>

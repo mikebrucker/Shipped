@@ -10,11 +10,19 @@
   </head>
 
   <nav>
-    <a href="/users/sign_in"><div>LOG IN</div></a>
-    <a href="/sign_out"><div>LOG OUT</div></a>
-    <a href="/users/sign_up"><div>SIGN UP</div></a>
-    <a href=""><div></div></a>
-    <a href=""><div></div></a>
+    <% if current_user %>
+      <a href="/boats"><div>BOATS</div></a>
+      <a href="/boats/new"><div>NEW BOAT</div></a>
+      <a href="/jobs"><div>JOBS</div></a>
+      <a href="/jobs/new"><div>NEW JOB</div></a>
+      <a href="/schedules"><div>SCHEDULES</div></a>
+      <a href="/schedules/new"><div>NEW SCHEDULE</div></a>
+      <a href="/profiles/<%= current_user.profile.id %>" ><div>PROFILE</div></a>
+      <a href="/sign_out"><div>LOG OUT</div></a>
+    <% else %>
+      <a href="/users/sign_in"><div>LOG IN</div></a>
+      <a href="/users/sign_up"><div>SIGN UP</div></a>
+    <% end %>
   </nav>
 
   <body>

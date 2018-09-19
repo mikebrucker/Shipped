@@ -16,8 +16,8 @@
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
-        <td><%= schedule.boat %></td>
-        <td><%= schedule.job %></td>
+        <td><%= schedule.boat.name %></td>
+        <td><%= schedule.job.name %></td>
         <td><%= schedule.start %></td>
         <td><%= schedule.finish %></td>
         <td><%= link_to 'Show', schedule %></td>

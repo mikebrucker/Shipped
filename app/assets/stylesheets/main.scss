@@ -1,0 +1,23 @@
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav {
+    font-size: 0;
+    div {
+        text-align: center;
+        font-size: 24px;
+        display: inline-block;
+        background: darkviolet;
+        color: darkorange;
+        width: 50%;
+        height: 60px;
+        line-height: 60px;
+    }
+    div:hover {
+        background: darkorange;
+        color: darkviolet;
+    }
+}
