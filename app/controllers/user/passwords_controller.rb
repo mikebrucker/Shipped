@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class User::PasswordsController < Devise::PasswordsController
-  # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  # GET /users/password/new
+  def new
+    super
+  end
 
   # POST /resource/password
   # def create

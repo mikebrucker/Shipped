@@ -13,8 +13,5 @@ Rails.application.routes.draw do
     authenticated do
       root :to => 'profiles#new'
     end
-  end
-  
-
- 
+  end 
 end

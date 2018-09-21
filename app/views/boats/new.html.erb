@@ -1,5 +1,9 @@
 <h1>New Boat</h1>
 
-<%= render 'form', boat: @boat, list: @list, current_user: @current_user %>
+<p>
+  <strong>Ship Captain:</strong> <%= current_user.profile.officer %>
+</p>
+
+<%= render 'form', boat: @boat, list: location_list.sort, current_user: current_user %>
 
 <%= link_to 'Back', boats_path %>

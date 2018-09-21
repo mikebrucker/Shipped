@@ -1,5 +1,5 @@
 body {
-    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -20,4 +20,28 @@ nav {
         background: darkorange;
         color: darkviolet;
     }
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.flash {
+    color: white;
+    font-size: 2em;
+    mix-blend-mode: difference;
+    text-align: center;
+}
+
+#error {
+    background: red;
+}
+
+#success {
+    background: green;
+}
+
+#notice {
+    background: yellow;
 }

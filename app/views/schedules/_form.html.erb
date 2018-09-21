@@ -13,22 +13,30 @@
 
   <div class="field">
     <%= form.label :boat_id %>
-    <%= form.collection_select :boat_id, Boat.all, :id, :name %>
+    <%= form.collection_select :boat_id, Boat.where("profile_id = ?", current_user.profile.id), :id, :name_containers, {include_blank: "Select"}, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :job_id %>
-    <%= form.collection_select :job_id, Job.all, :id, :name %>
+    <%= form.collection_select :job_id, Job.select{ |j| j.containers_needed > 0}, :id, :containers_needed_text, {include_blank: "Select"}, required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :start %>
-    <%= form.datetime_select :start %>
+    <%= form.label :start, "Start Date:" %>
+    <% if schedule.start %>
+      <%= form.date_field :start, required: "required", min: schedule.start.to_date, value: schedule.start.to_date, required: "required" %>
+    <% else %>
+      <%= form.date_field :start, required: "required", min: today, value: today, required: "required" %>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= form.label :finish %>
-    <%= form.datetime_select :finish %>
+    <%= form.label :finish, "Finish Date" %>
+    <% if schedule.finish %>
+      <%= form.date_field :finish, required: "required", min: today, value: schedule.finish.to_date, required: "required" %>
+    <% else %>
+      <%= form.date_field :finish, required: "required", min: today + 1, value: today + 1, required: "required" %>
+    <% end %>
   </div>
 
   <div class="actions">

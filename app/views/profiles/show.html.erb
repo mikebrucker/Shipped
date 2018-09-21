@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>First Name:</strong>
   <%= @profile.fname %>
@@ -15,5 +13,7 @@
   <%= @profile.rank %>
 </p>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<% if current_user == @profile.user %>
+  <%= link_to 'Edit', edit_profile_path(@profile) %> |
+  <%= link_to 'All Ship Captains', profiles_path %>
+<% end %>

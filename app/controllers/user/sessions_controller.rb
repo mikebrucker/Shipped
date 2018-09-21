@@ -14,6 +14,7 @@ class User::SessionsController < Devise::SessionsController
       redirect_to profile_path
     else
       redirect_to new_profile_path
+    end
   end
 
   # DELETE /resource/sign_out

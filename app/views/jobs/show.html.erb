@@ -1,34 +1,54 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
-  <%= @job.name %>
+  <strong>Job Name:</strong> <%= @job.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @job.desc %>
+  <strong>Origin:</strong> <%= @job.origin %>
 </p>
 
 <p>
-  <strong>Origin:</strong>
-  <%= @job.origin %>
+  <strong>Destination:</strong> <%= @job.destination %>
 </p>
 
 <p>
-  <strong>Destination:</strong>
-  <%= @job.destination %>
+  <strong>Job Cost:</strong> <%= @job.cost %>
 </p>
 
 <p>
-  <strong>Cost:</strong>
-  <%= @job.cost %>
+  <strong>Containers Needed:</strong> <%= @job.containers %>
 </p>
 
 <p>
-  <strong>Containers Needed:</strong>
-  <%= @job.containers %>
+  <strong>Estimated Finish Time: </strong> <%= @job.eta %>
+</p>
+
+<p>
+  <strong>Job Description:</strong> <div><%= @job.desc %></div>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>
+
+<h2>Job Name: <%= @job.name %>'s schedules</h2>
+
+<% @job.schedules.each do |schedule| %>
+<p>
+  <strong>Boat:</strong> <%= schedule.boat.name %>
+</p>
+
+<p>
+  <strong>Job:</strong> <%= schedule.job.name %>
+</p>
+
+<p>
+  <strong>Start:</strong> <%= schedule.start.strftime("%B, %d, %Y") %>
+</p>
+
+<p>
+  <strong>Finish:</strong> <%= schedule.finish.strftime("%B, %d, %Y") %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(schedule) %> |
+<%= link_to 'Back', schedules_path %>
+
+<% end %>
