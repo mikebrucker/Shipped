@@ -11,7 +11,7 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    redirect_to new_user_session_path
+    redirect_to new_profile_path
   end
 
   # GET /resource/edit

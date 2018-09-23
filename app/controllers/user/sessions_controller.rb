@@ -10,7 +10,7 @@ class User::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    if current_user.profile
+    if current_user.profile.exists?
       redirect_to profile_path
     else
       redirect_to new_profile_path

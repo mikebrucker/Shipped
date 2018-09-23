@@ -1,11 +1,21 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
+
   # GET /profiles
   def index
+    unless current_user.profile
+      redirect_to new_profile_path
+      return
+    end
     @profiles = Profile.all
   end
 
   # GET /profiles/1
   def show
+    unless current_user.profile
+      redirect_to new_profile_path
+      return
+    end
     @profile = Profile.find(params[:id])
   end
 
@@ -13,12 +23,17 @@ class ProfilesController < ApplicationController
   def new
     if current_user.profile
       redirect_to current_user.profile
+      return
     end
     @profile = Profile.new
   end
 
   # GET /profiles/1/edit
   def edit
+    unless current_user.profile
+      redirect_to new_profile_path
+      return
+    end
     @profile = Profile.find(params[:id])
     if current_user != @profile.user
       redirect_to @profile

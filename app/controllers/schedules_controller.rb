@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
+
   # GET /schedules
   def index
     @schedules = Schedule.all.sort_by{ |s| s.job.name.downcase}

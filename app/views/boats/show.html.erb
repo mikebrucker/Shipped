@@ -14,6 +14,14 @@
   <strong>Location:</strong> <%= @boat.location %>
 </p>
 
+<p>
+  <% if @boat.avatar.attached?%>
+    <%= image_tag @boat.avatar.variant(resize: "100x100") %>
+  <% else %>
+    No Image
+  <% end %>
+</p>
+
 <% if current_user == @boat.profile.user %>
   <%= link_to 'Edit', edit_boat_path(@boat) %>
   <%= link_to 'Destroy', @boat, method: :delete %>

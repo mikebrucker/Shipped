@@ -1,4 +1,6 @@
 class BoatsController < ApplicationController
+  before_action :authenticate_user!
+
   # GET /boats
   def index
     @boats = Boat.all
@@ -25,9 +27,13 @@ class BoatsController < ApplicationController
   def create
     if ["..SS", ".SS", "SS", "..S", ".S", "S", "..", "."].include?(params[:boat][:name].gsub(/[[:space:]]/, '').chars.sort.join.upcase)
       flash[:notice] = "Please Name Your Boat Properly"
+    elsif
+      params[:boat][:name] == Boat.where(name: params[:boat][:name]).first
+      flash[:notice] = "Boat Name Already Taken"
       redirect_back(fallback_location: root_path)
     else
       boat = Boat.create(boat_params)
+      boat.avatar.attach(params[:boat][:avatar])
       flash[:success] = "Boat #{boat.name} Created"
       redirect_to boat
     end
@@ -35,11 +41,15 @@ class BoatsController < ApplicationController
 
   # PATCH/PUT /boats/1
   def update
+    boat = Boat.find(params[:id])
     if ["..SS", ".SS", "SS", "..S", ".S", "S", "..", "."].include?(params[:boat][:name].gsub(/[[:space:]]/, '').chars.sort.join.upcase)
       flash[:notice] = "Please Name Your Boat Properly"
-      redirect_back(fallback_location: root_path)
+    elsif boat.name != params[:boat][:name]
+      if params[:boat][:name] == Boat.where(name: params[:boat][:name]).first
+        flash[:notice] = "Boat Name Already Taken"
+        redirect_back(fallback_location: root_path)
+      end
     else
-      boat = Boat.find(params[:id])
       flash[:success] = "Boat #{boat.name} Updated"
       boat.update(boat_params)
       redirect_to boat
@@ -66,6 +76,6 @@ class BoatsController < ApplicationController
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def boat_params
-    params.require(:boat).permit(:name, :max_containers, :location, :profile_id)
+    params.require(:boat).permit(:name, :max_containers, :location, :profile_id, :avatar)
   end
 end

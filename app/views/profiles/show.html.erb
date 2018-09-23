@@ -17,3 +17,20 @@
   <%= link_to 'Edit', edit_profile_path(@profile) %> |
   <%= link_to 'All Ship Captains', profiles_path %>
 <% end %>
+
+<% @profile.boats.each do |boat| %>
+  <% if boat.avatar.attached? %>
+    <p><%= image_tag boat.avatar.variant(resize: "100x100") %></p>
+  <% else %>
+    <p>No Image</p>
+  <% end %>
+    <p><%= boat.profile.officer %></p>
+    <p><%= boat.name %></p>
+    <p><%= boat.max_containers %></p>
+    <p><%= boat.location %></p>
+    <p><%= link_to 'Show', boat %></p>
+    <% if current_user == boat.profile.user %>
+      <p><%= link_to 'Edit', edit_boat_path(boat) %></p>
+      <p><%= link_to 'Destroy', boat, method: :delete %></p>
+    <% end %>
+<% end %>

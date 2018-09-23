@@ -14,6 +14,11 @@
   <tbody>
     <% @boats.each do |boat| %>
       <tr>
+      <% if boat.avatar.attached? %>
+        <td><%= image_tag boat.avatar.variant(resize: "100x100") %></td>
+      <% else %>
+        <td>No Image</td>
+      <% end %>
         <td><%= boat.profile.officer %></td>
         <td><%= boat.name %></td>
         <td><%= boat.max_containers %></td>

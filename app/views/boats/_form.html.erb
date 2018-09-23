@@ -23,15 +23,20 @@
   <div class="field">
     <%= form.label :max_containers, "# of Containers:" %>
     <% if boat.name %>
-      <%= form.number_field :max_containers, value: boat.max_containers, min: 100, max: 5001, step: 50, required: "required" %>
+      <%= form.number_field :max_containers, value: boat.max_containers, min: 100, max: 5000, step: 50, required: "required" %>
     <% else %>
-      <%= form.number_field :max_containers, value: 100, min: 100, max: 5001, step: 50, required: "required" %>
+      <%= form.number_field :max_containers, value: 100, min: 100, max: 5000, step: 50, required: "required" %>
     <% end %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
     <%= form.select :location, list, required: "required" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
   </div>
 
     <%= form.hidden_field :profile_id, value: current_user.profile.id %>

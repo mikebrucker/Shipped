@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :authenticate_user!
+
   # GET /jobs
   def index
     @jobs = Job.all
