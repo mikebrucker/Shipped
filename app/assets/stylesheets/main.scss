@@ -1,20 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     width: 100%;
     margin: 0 auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
 }
 
 nav {
+    background: darkviolet;
     font-size: 0;
     div {
+        margin: 4px;
+        padding: 16px;
+        font-size: 20px;
+        min-width: 160px;
+        border: 2px solid darkorange;
+        border-radius: 45px;
         text-align: center;
-        font-size: 24px;
         display: inline-block;
         background: darkviolet;
         color: darkorange;
-        width: 50%;
-        height: 60px;
-        line-height: 60px;
     }
     div:hover {
         background: darkorange;

@@ -20,15 +20,18 @@ class BoatsController < ApplicationController
   # GET /boats/1/edit
   def edit
     @boat = Boat.find(params[:id])
+    unless current_user == @boat.profile.user
+      redirect_to boats_path
+    end
     @list = location_list.sort
   end
 
   # POST /boats
   def create
-    if ["..SS", ".SS", "SS", "..S", ".S", "S", "..", "."].include?(params[:boat][:name].gsub(/[[:space:]]/, '').chars.sort.join.upcase)
+    if ["..SS", ".SS", "SS", "..S", ".S", "S", "..", "."].include?(params[:boat][:name].gsub(/[[:space:]]/, '').chars.sort.join.upcase) || params[:boat][:name].gsub(/[[:space:]]/, '') == ""
       flash[:notice] = "Please Name Your Boat Properly"
-    elsif
-      params[:boat][:name] == Boat.where(name: params[:boat][:name]).first
+      redirect_back(fallback_location: root_path)
+    elsif params[:boat][:name] == Boat.where(name: params[:boat][:name]).first
       flash[:notice] = "Boat Name Already Taken"
       redirect_back(fallback_location: root_path)
     else
@@ -42,18 +45,18 @@ class BoatsController < ApplicationController
   # PATCH/PUT /boats/1
   def update
     boat = Boat.find(params[:id])
-    if ["..SS", ".SS", "SS", "..S", ".S", "S", "..", "."].include?(params[:boat][:name].gsub(/[[:space:]]/, '').chars.sort.join.upcase)
+    if ["..SS", ".SS", "SS", "..S", ".S", "S", "..", "."].include?(params[:boat][:name].gsub(/[[:space:]]/, '').chars.sort.join.upcase) || params[:boat][:name].gsub(/[[:space:]]/, '') == ""
       flash[:notice] = "Please Name Your Boat Properly"
     elsif boat.name != params[:boat][:name]
       if params[:boat][:name] == Boat.where(name: params[:boat][:name]).first
         flash[:notice] = "Boat Name Already Taken"
-        redirect_back(fallback_location: root_path)
+      elsif current_user == boat.profile.user
+        flash[:success] = "Boat #{boat.name} Updated"
+        boat.update(boat_params)
+        boat.avatar.attach(params[:boat][:avatar])
       end
-    else
-      flash[:success] = "Boat #{boat.name} Updated"
-      boat.update(boat_params)
-      redirect_to boat
     end
+    redirect_to boat
   end
 
   # DELETE /boats/1

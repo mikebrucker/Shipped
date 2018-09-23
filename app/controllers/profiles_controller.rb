@@ -23,7 +23,6 @@ class ProfilesController < ApplicationController
   def new
     if current_user.profile
       redirect_to current_user.profile
-      return
     end
     @profile = Profile.new
   end
@@ -42,6 +41,10 @@ class ProfilesController < ApplicationController
 
   # POST /profiles
   def create
+    if current_user.profile
+      redirect_to current_user.profile
+      return
+    end
     profile = Profile.create(profile_params)
     flash[:success] = "#{profile.officer}'s Profile Created"
     redirect_to profile
@@ -50,8 +53,10 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   def update
     profile = Profile.find(params[:id])
-    profile.update(profile_params)
-    flash[:success] = "#{profile.officer}'s Profile Updated"
+    if profile == current_user.profile
+      profile.update(profile_params)
+      flash[:success] = "#{profile.officer}'s Profile Updated"
+    end
     redirect_to profile
   end
   
