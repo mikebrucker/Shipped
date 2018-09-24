@@ -36,7 +36,7 @@ class BoatsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       boat = Boat.create(boat_params)
-      boat.avatar.attach(params[:boat][:avatar])
+      # boat.avatar.attach(params[:boat][:avatar])
       flash[:success] = "Boat #{boat.name} Created"
       redirect_to boat
     end
@@ -53,12 +53,12 @@ class BoatsController < ApplicationController
       elsif current_user == boat.profile.user
         flash[:success] = "Boat #{boat.name} Updated"
         boat.update(boat_params)
-        boat.avatar.attach(params[:boat][:avatar])
+        # boat.avatar.attach(params[:boat][:avatar])
       end
     elsif boat.name == params[:boat][:name] && current_user == boat.profile.user
       flash[:success] = "Boat #{boat.name} Updated"
       boat.update(boat_params)
-      boat.avatar.attach(params[:boat][:avatar])
+      # boat.avatar.attach(params[:boat][:avatar])
     end
     redirect_to boat
   end
