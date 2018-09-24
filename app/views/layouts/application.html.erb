@@ -7,31 +7,50 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   </head>
 
-  <nav>
-    <% if !current_user %>
-      <a href="/users/sign_in"><div>LOG IN</div></a>
-      <a href="/users/sign_up"><div>SIGN UP</div></a>
-    <% elsif !current_user.profile %>
-      <a href="/sign_out"><div>LOG OUT</div></a>
-    <% else %>
-      <a href="/boats"><div>BOATS</div></a>
-      <a href="/boats/new"><div>NEW BOAT</div></a>
-      <a href="/jobs"><div>JOBS</div></a>
-      <a href="/jobs/new"><div>NEW JOB</div></a>
-      <a href="/schedules"><div>SCHEDULES</div></a>
-      <a href="/schedules/new"><div>NEW SCHEDULE</div></a>
-      <a href="/profiles/<%= current_user.profile.id %>" ><div>PROFILE</div></a>
-      <a href="/sign_out"><div>LOG OUT</div></a>
-    <% end %>
-  </nav>
+  <body>
+    <header>
+      <main>
+        No Ship Sherlock Inc.
+      </main>
+    </header>
+
+    <nav>
+      <% if !current_user %>
+        <a href="/users/sign_in"><div>LOG IN</div></a>
+        <a href="/users/sign_up"><div>SIGN UP</div></a>
+      <% elsif !current_user.profile %>
+        <a href="/sign_out"><div>LOG OUT</div></a>
+      <% else %>
+      <div>
+        <a href="/boats"><div>BOATS</div></a>
+        <a href="/boats/new"><div>NEW BOAT</div></a>
+      </div>
+      <div>
+        <a href="/jobs"><div>JOBS</div></a>
+        <a href="/jobs/new"><div>NEW JOB</div></a>
+      </div>
+      <div>
+        <a href="/schedules"><div>SCHEDULES</div></a>
+        <a href="/schedules/new"><div>NEW SCHEDULE</div></a>
+      </div>
+      <div>
+        <a href="/profiles/<%= current_user.profile.id %>" ><div>PROFILE</div></a>
+        <a href="/sign_out"><div>LOG OUT</div></a>
+      </div>
+      <% end %>
+    </nav>
 
     <div id="notice"><div class="flash"><%= notice %></div></div>
     <div id="success"><div class="flash"><%= flash[:success] if flash[:success] %></div></div>
     <div id="error"><div class="flash"><%= flash[:error] if flash[:error] %></div></div>
 
-  <body>
-    <%= yield %>
+    <div class="yield"><%= yield %></div>
+
+    <footer>
+      <div>&copy; Mike Brucker 2018</div><div>No Ship Sherlock Inc.&trade;</div>
+    </footer>
   </body>
 </html>

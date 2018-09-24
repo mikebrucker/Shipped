@@ -9,27 +9,61 @@ body {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+}
+header {
+    background: darkorange;
+    font-size: 44px;
+    padding: 10px 0;
+    main {
+        display: inline-block;
+        border: 3px solid darkviolet;
+        border-radius: 20px;
+        padding: 16px;
+        margin: 8px;
+        background: darkviolet;
+        color: darkorange;
+
+    }
+}
+footer {
+    background: darkorange;
+    color: darkviolet;
+    margin-top: 10px;
+    padding: 20px 0;
+    div {
+        display: inline-block;
+        margin: 0 8px;
+    }
+}
 nav {
     background: darkviolet;
     font-size: 0;
     div {
-        margin: 4px;
-        padding: 16px;
-        font-size: 20px;
-        min-width: 160px;
-        border: 2px solid darkorange;
-        border-radius: 45px;
-        text-align: center;
         display: inline-block;
-        background: darkviolet;
-        color: darkorange;
-    }
-    div:hover {
-        background: darkorange;
-        color: darkviolet;
+        div {
+            display: block;
+            margin: 4px;
+            padding: 16px 0;
+            min-width: 200px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            background: darkviolet;
+            color: darkorange;
+            border: 3px solid darkorange;
+            border-radius: 20px;
+        }
+        div:hover {
+            background: darkorange;
+            color: darkviolet;
+        }
     }
 }
-
+.yield {
+    min-height: 414px;
+}
 input[type=date]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     display: none;
@@ -52,4 +86,41 @@ input[type=date]::-webkit-inner-spin-button {
 
 #notice {
     background: yellow;
+}
+
+.hidden {
+    display: none;
+}
+
+@media all and (min-width: 481px) and (max-width: 560px) {
+    header {
+        font-size: 36px;
+    }
+}
+
+@media all and (min-width: 441px) and (max-width: 480px) {
+    header {
+        font-size: 30px;
+    }
+}
+
+@media all and (max-width: 440px) {
+    header {
+        font-size: 24px;
+        padding: 2px;
+        main {
+            padding: 8px;
+        }
+    }
+    nav {
+        padding: 4px 0;
+        div {
+            display: block;
+            width: 100%;
+            div {
+                margin: 0 auto 4px;
+                width: 100%;
+            }
+        }
+    }
 }

@@ -1,0 +1,30 @@
+form {
+    margin: 0 auto;
+    max-width: 420px;
+    border: 2px solid darkorange;
+    border-radius: 20px;
+    padding: 10px;
+    .field {
+        border: 2px solid darkviolet;
+        border-radius: 20px;
+        margin: 4px auto;
+        padding: 10px;
+        text-align: left;
+        textarea {
+            width: 60%;
+            height: 100%;
+        }
+        input, select, textarea {
+            float: right;
+        }
+        input::after, select::after, textarea::after {
+            float: clear;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+        }
+    }
+    .textarea {
+        height: 120px;
+    }
+}
