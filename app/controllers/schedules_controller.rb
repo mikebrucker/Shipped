@@ -20,7 +20,7 @@ class SchedulesController < ApplicationController
   # GET /schedules/1/edit
   def edit
     @schedule = Schedule.find(params[:id])
-    unless current_user == @schedule.boat.profile
+    unless current_user == @schedule.boat.profile.user
       redirect_to schedules_path
     end
     @today = Date.current
