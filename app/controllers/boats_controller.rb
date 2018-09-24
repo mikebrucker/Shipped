@@ -50,11 +50,11 @@ class BoatsController < ApplicationController
     elsif boat.name != params[:boat][:name]
       if params[:boat][:name] == Boat.where(name: params[:boat][:name]).first
         flash[:notice] = "Boat Name Already Taken"
+      elsif current_user == boat.profile.user
+        flash[:success] = "Boat #{boat.name} Updated"
+        boat.update(boat_params)
+        boat.avatar.attach(params[:boat][:avatar])
       end
-    elsif current_user == boat.profile.user
-      flash[:success] = "Boat #{boat.name} Updated"
-      boat.update(boat_params)
-      boat.avatar.attach(params[:boat][:avatar])
     elsif boat.name == params[:boat][:name] && current_user == boat.profile.user
       flash[:success] = "Boat #{boat.name} Updated"
       boat.update(boat_params)
