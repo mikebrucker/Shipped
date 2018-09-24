@@ -35,8 +35,11 @@
   </div>
 
   <div class="field">
+    <% if boat.avatar.attached? %>
+      <%= image_tag @boat.avatar.variant(resize: "100x100") %>
+    <% end %>
     <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
+      <%= form.file_field :avatar %>
   </div>
 
     <%= form.hidden_field :profile_id, value: current_user.profile.id %>
