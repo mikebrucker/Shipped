@@ -2,11 +2,16 @@
     box-sizing: border-box;
 }
 
+html {
+    background: darkorange;
+}
+
 body {
     width: 100%;
     margin: 0 auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+    background: whitesmoke;
 }
 
 a {
@@ -15,16 +20,14 @@ a {
 header {
     background: darkorange;
     font-size: 44px;
-    padding: 10px 0;
+    font-weight: bold;
+    padding: 4px 0;
     main {
         display: inline-block;
         border: 3px solid darkviolet;
-        border-radius: 20px;
+        border-radius: 30px;
         padding: 16px;
-        margin: 8px;
-        background: darkviolet;
-        color: darkorange;
-
+        color: darkviolet;
     }
 }
 footer {
@@ -40,11 +43,12 @@ footer {
 nav {
     background: darkviolet;
     font-size: 0;
+    padding: 3px 0;
     div {
         display: inline-block;
         div {
             display: block;
-            margin: 4px;
+            margin: 0 2px 3px;
             padding: 16px 0;
             min-width: 200px;
             font-size: 20px;
@@ -53,7 +57,7 @@ nav {
             background: darkviolet;
             color: darkorange;
             border: 3px solid darkorange;
-            border-radius: 20px;
+            border-radius: 30px;
         }
         div:hover {
             background: darkorange;
@@ -92,9 +96,15 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
+@media all and (min-width: 561px) and (max-width: 620px) {
+    header {
+        font-size: 40px;
+    }
+}
+
 @media all and (min-width: 481px) and (max-width: 560px) {
     header {
-        font-size: 36px;
+        font-size: 34px;
     }
 }
 
@@ -107,20 +117,28 @@ input[type=date]::-webkit-inner-spin-button {
 @media all and (max-width: 440px) {
     header {
         font-size: 24px;
-        padding: 2px;
+        padding: 3px;
         main {
-            padding: 8px;
+            padding: 16px 4px;
+            display: block;
+            width: 100%;
         }
     }
     nav {
-        padding: 4px 0;
+        padding: 3px 0;
         div {
             display: block;
             width: 100%;
+            padding: 0 4px;
             div {
-                margin: 0 auto 4px;
+                margin: 0 auto 3px;
                 width: 100%;
             }
         }
+    }
+}
+@media all and (max-width: 360px) {
+    header {
+        font-size: 20px;
     }
 }

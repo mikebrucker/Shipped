@@ -30,17 +30,21 @@
   </div>
 
   <div class="field">
-    <%= form.label :location %>
+    <%= form.label :location, "Location:" %>
     <%= form.select :location, list, required: "required" %>
   </div>
 
-  <div class="field">
-    <% if boat.avatar.attached? %>
-      <%= image_tag @boat.avatar.variant(resize: "100x100") %>
-    <% end %>
-    <%= form.label :avatar %>
+  <div class="field avatar">
+    <%= form.label :avatar, "Boat Picture:" %>
     <%= form.file_field :avatar, id: "avatar-upload" %>
-    <img id="img_prev" height=100 src="#" class="img-thumbnail hidden"/>
+    <div class="center">
+      <% if boat.avatar.attached? %>
+        <%= image_tag @boat.avatar.variant(resize: "100x100") %>
+      <% end %>
+    </div>
+    <div id="rem_hid" class="center hidden"><p>New Picture:</p>
+      <img id="img_prev" height=100 src="#" class="img-thumbnail hidden"/>
+    </div>
   </div>
 
     <%= form.hidden_field :profile_id, value: current_user.profile.id %>

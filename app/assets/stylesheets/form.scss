@@ -27,4 +27,17 @@ form {
     .textarea {
         height: 120px;
     }
+    .center {
+        text-align: center;
+        img {
+            display: inline-block;
+        }
+    }
+    input[type=submit], span {
+        background: lime;
+        z-index: 2;
+    }
+    input[type=file] {
+        background: rgba( 0, 0, 0, 0);
+    }
 }

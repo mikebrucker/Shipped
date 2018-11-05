@@ -12,6 +12,7 @@ function readURL(input) {
 
     $("#avatar-upload").change(function() {
         $('#img_prev').removeClass('hidden');
+        $('#rem_hid').removeClass('hidden');
     readURL(this);
     });
 });
